@@ -1,0 +1,8 @@
+<div class="container">
+    <div [ngClass]="{'block': true, 'active': isLinkActive('/userList')}">
+        <a routerLink="/userList">Go to User List</a>
+    </div>
+    <div [ngClass]="{'block': true, 'active': isLinkActive('/bankList')}">
+        <a routerLink="/bankList">Go to Bank List</a>
+    </div>
+</div>
