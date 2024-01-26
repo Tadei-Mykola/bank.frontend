@@ -3,6 +3,7 @@ import { Bank, User } from 'src/assets/interface';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { AddBankForUserComponent } from '../add-bank-for-user/add-bank-for-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -37,12 +38,23 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  openDialog(): void {
+  openDialogUser(user?: User): void {
     const dialogRef = this.dialog.open(AddUserComponent, {
+      data: user
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getUsers
+      this.getUsers()
+    });
+  }
+
+  public openDialogAddBankForUser(user: User): void{
+    const dialogRef = this.dialog.open(AddBankForUserComponent, {
+      data: { userId: user.id },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      user.showBank = false;
     });
   }
 
@@ -54,7 +66,4 @@ export class UserListComponent implements OnInit {
     this.userService.deleteBank(user.id, id_bank).subscribe(() => user.showBank = false)
   }
 
-  public addBank(user: User, bank_name: string) {
-    this.userService.addBank({user_id: user.id, bank_name: bank_name}).subscribe(() => user.showBank = false)
-  }
 }

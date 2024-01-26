@@ -4,7 +4,7 @@
             <p>Прізвище і Ім'я</p>
             <p>Пошта</p>
         </div>
-        <button (click)="openDialog()">Додати користувана</button>
+        <button (click)="openDialogUser()">Додати користувана</button>
     </div>
     <div>
         <div *ngFor="let user of users">
@@ -13,9 +13,9 @@
                     <p>{{user.last_name}} {{user.first_name}}</p>
                     <p>{{user.email}}</p>
                     <div class="fun">
-                        <a href="">Змінити</a>
+                        <button (click)="openDialogUser(user)">Змінити</button>
                         <button (click)="deleteUser(user.id)">Видалити</button>
-                        <button>Додати Банк</button>
+                        <button (click)="openDialogAddBankForUser(user)">Додати Банк</button>
                         <span (click)="toggleBankList(user)">{{ user.showBank ? '▲' : '▼' }}</span>
                     </div>
                 </div>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { AddUser, User } from 'src/assets/interface';
+import { AddBank, AddUser, User } from 'src/assets/interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BankService {
   private baseUrl = 'http://127.0.0.1:8000/';
   private csrfToken: string | null = null;
   constructor(private http: HttpClient) {
@@ -23,16 +23,16 @@ export class UserService {
     })
   };
 
-  getAllUsers() {
-    return this.http.get(`${this.baseUrl}users/users`);
+  getAllBanks() {
+    return this.http.get(`${this.baseUrl}bank/banks`);
   }
 
-  getAllUserBanks(id: number) {
-    return this.http.get(`${this.baseUrl}users/banks/${id}`);
+  getAllBankUsers(id: number) {
+    return this.http.get(`${this.baseUrl}bank/users/${id}`);
   }
 
-  addUser(body: AddUser) {
-    return this.http.post(`${this.baseUrl}users/newUser`, body, this.httpOptions)
+  addBank(body: AddBank) {
+    return this.http.post(`${this.baseUrl}bank/newBank`, body, this.httpOptions)
       .pipe(tap(() => this.updateCsrfToken())
       );
   }
@@ -48,23 +48,12 @@ export class UserService {
     );
   }
 
-  deleteUser(id: number) {
-    return this.http.delete(`${this.baseUrl}users/delete/${id}`, this.httpOptions).pipe(tap(() => this.updateCsrfToken()));
+  deleteBank(id: number) {
+    return this.http.delete(`${this.baseUrl}bank/delete/${id}`, this.httpOptions).pipe(tap(() => this.updateCsrfToken()));
   }
 
-  deleteBank(user_id: number, bank_id: number) {
-    return this.http.delete(`${this.baseUrl}users/bank/delete/${user_id}/${bank_id}`, this.httpOptions).pipe(tap(() => this.updateCsrfToken()));
-  }
-
-  public addBank(id_user: number, bank_name: string) {
-    const data = {id_user: id_user, bank_name: bank_name}
-    return this.http.post(`${this.baseUrl}users/bank`, data, this.httpOptions)
-      .pipe(tap(() => this.updateCsrfToken())
-      );
-  }
-
-  public changeUser(user: AddUser) {
-    return this.http.put(`${this.baseUrl}users/update/${user.id}`, user, this.httpOptions)
+  public changeBank(bank: AddBank) {
+    return this.http.put(`${this.baseUrl}bank/update/${bank.id}`, bank, this.httpOptions)
     .pipe(tap(() => this.updateCsrfToken()));
   }
 }

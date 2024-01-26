@@ -1,0 +1,15 @@
+<form [formGroup]="bankForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="bank_name">Ім'я</label>
+        <input type="text" id="bank_name" formControlName="bank_name" />
+    </div>
+    <div>
+        <label for="routing_number">Routing number</label>
+        <input type="text" id="routing_number" formControlName="routing_number" />
+    </div>
+    <div>
+        <label for="swift_bic">Swift_bic</label>
+        <input type="text" id="swift_bic" formControlName="swift_bic" />
+    </div>
+    <button type="submit" [disabled]="!bankForm.valid">Submit</button>
+</form>

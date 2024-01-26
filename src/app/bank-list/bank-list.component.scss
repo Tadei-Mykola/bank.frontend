@@ -1,0 +1,78 @@
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    border: 1px black solid;
+    button {
+
+    }
+
+    .data-name {
+        width: 100%;
+        display: flex;
+        
+        p {
+            width: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            border-right: 1px black solid;
+        }
+        
+    }
+    
+}
+
+.bank {
+    width: 100%;
+    
+    .data {
+        display: flex;
+        border: 1px black solid;
+
+        p {
+            width: 375px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            border-right: 1px black solid;
+        }
+
+        .fun {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }  
+    }
+
+    .user {
+        width: 100%;
+        div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            border: 1px black solid;
+
+            p {
+                margin: 0;
+                width: 22.1%;
+                border-right: 1px black solid;
+            }
+        }
+
+        
+    }
+
+    
+
+    
+}

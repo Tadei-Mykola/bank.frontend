@@ -1,1 +1,33 @@
-<p>bank-list works!</p>
+<div class="container">
+    <div class="head">
+        <div class="data-name">
+            <p>Ім'я</p>
+            <p>Routing number</p>
+            <p>Swift_bic</p>
+        </div>
+        <button (click)="openDialogBank()">Додати банк</button>
+    </div>
+    <div>
+        <div *ngFor="let bank of banks">
+            <div class="bank">
+                <div class="data">
+                    <p>{{bank.bank_name}}</p>
+                    <p>{{bank.routing_number}}</p>
+                    <p>{{bank.swift_bic}}</p>
+                    <div class="fun">
+                        <button (click)="openDialogBank(bank)">Змінити</button>
+                        <button (click)="deleteBank(bank.id)">Видалити</button>
+                        <span (click)="toggleUserList(bank)">{{ bank.showUser ? '▲' : '▼' }}</span>
+                    </div>
+                </div>
+                <div class="user" *ngIf="bank.showUser">
+                    <div *ngFor="let user of bank.userBanks">
+                        <p>{{user.last_name}} {{user.first_name}}</p>
+                        <p>{{user.email}}</p>
+                        <button (click)="deleteBankForUser(user, bank)">Видалити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
