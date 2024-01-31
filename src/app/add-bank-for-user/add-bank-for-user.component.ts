@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./add-bank-for-user.component.scss']
 })
 export class AddBankForUserComponent {
-  public bankName: string = 'ABG SUNDAL COLLIER LIMITED';
+  public bankName: string = '';
   private userId: number;
   constructor(private dialogRef: MatDialogRef<AddBankForUserComponent>, private userService: UserService, @Inject(MAT_DIALOG_DATA) private data: { userId: number }){
     this.userId = data.userId;
